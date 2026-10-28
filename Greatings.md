@@ -4,7 +4,7 @@
 </div>
 
 <div align="center" style="margin: 24px 0 18px;">
-  <img src="[https://static.vecteezy.com/system/resources/thumbnails/007/031/665/small/a-raccoon-wearing-bright-green-sunglasses-throws-its-paws-in-the-air-making-rock-hand-gestures-free-png.pn](https://www.amazon.in/Raccoon-Sticker-Laptop-Window-AWPS109/dp/B0C99SLC1J)" alt="라쿤이 밝은 녹색 선글라스를 쓰고 손을 들고 있는 이미지" width="420" />
+  <img src="https://cdn.pixabay.com/photo/2020/08/09/10/03/raccoon-5472683_1280.png" alt="라쿤 이미지" style="max-width:420px; width:100%; height:auto; border-radius:18px; box-shadow:0 12px 30px rgba(124,58,237,0.12);" />
 </div>
 
 <div style="background:linear-gradient(135deg,#f5f3ff,#eef2ff); border:1px solid #ddd6fe; border-radius:16px; padding:24px 20px; box-shadow:0 6px 18px rgba(124,58,237,0.08); max-width:700px; margin:0 auto;">
