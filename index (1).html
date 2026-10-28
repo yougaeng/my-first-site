@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>웨비나 신청 | 나만의 웹페이지 만들기</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --text: #14213d;
+      --sub: #54627f;
+      --line: #d9e0ee;
+      --accent: #2f5bff;
+      --accent-text: #ffffff;
+      --mark: #ffd23f;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e1524;
+        --card: #162036;
+        --text: #eef2fb;
+        --sub: #a3b2cf;
+        --line: #2a3857;
+        --accent: #7b9bff;
+        --accent-text: #0e1524;
+        --mark: #ffd23f;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 56px 24px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: start;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin: 0 0 16px;
+    }
+    h1 span {
+      background: linear-gradient(transparent 62%, var(--mark) 62%);
+    }
+    .lead { color: var(--sub); font-size: 1.1rem; margin: 0 0 32px; max-width: 34em; }
+    dl { margin: 0; border-top: 1px solid var(--line); }
+    .row { display: flex; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    dt { width: 64px; flex: none; color: var(--sub); }
+    dd { margin: 0; font-weight: 600; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .card h2 { margin: 0 0 4px; font-size: 1.3rem; }
+    .card p.note { margin: 0 0 20px; color: var(--sub); font-size: 0.95rem; }
+    label { display: block; font-weight: 600; margin: 16px 0 6px; }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      font: inherit;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    input:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; margin-top: 18px; color: var(--sub); font-size: 0.92rem; }
+    .check input { margin-top: 5px; }
+    button {
+      width: 100%;
+      margin-top: 22px;
+      font: inherit;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--accent-text);
+      background: var(--accent);
+      border: 0;
+      border-radius: 10px;
+      padding: 14px;
+      cursor: pointer;
+    }
+    button[disabled] { opacity: 0.6; cursor: default; }
+    #msg { margin: 14px 0 0; font-weight: 600; min-height: 1.5em; }
+    #msg.ok { color: var(--accent); }
+    #msg.err { color: #d93a3a; }
+    @media (max-width: 760px) {
+      .wrap { grid-template-columns: 1fr; gap: 32px; padding: 36px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section>
+      <h1>나만의 웹페이지,<br><span>직접 만들어 봅니다</span></h1>
+      <p class="lead">코딩을 몰라도 괜찮습니다. 90분 동안 AI와 함께 첫 웹페이지를 만들고 GitHub에 공개하는 과정을 따라 해 봅니다.</p>
+      <dl>
+        <div class="row"><dt>일시</dt><dd>2026년 11월 20일(금) 오후 7:00 – 8:30</dd></div>
+        <div class="row"><dt>방식</dt><dd>온라인 생중계 (신청하신 분께 접속 링크를 메일로 보내드립니다)</dd></div>
+        <div class="row"><dt>대상</dt><dd>코딩 경험이 없는 입문자</dd></div>
+        <div class="row"><dt>참가비</dt><dd>무료</dd></div>
+      </dl>
+    </section>
+
+    <section class="card">
+      <h2>참가 신청</h2>
+      <p class="note">아래 정보를 남겨 주시면 접속 링크를 보내드립니다.</p>
+      <form id="form" action="https://formspree.io/f/여기에-폼-ID" method="POST">
+        <label for="name">이름</label>
+        <input id="name" name="name" type="text" required autocomplete="name">
+
+        <label for="email">이메일</label>
+        <input id="email" name="email" type="email" required autocomplete="email">
+
+        <label for="phone">연락처 (선택)</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel">
+
+        <label class="check"><input type="checkbox" name="agree" required> 웨비나 안내를 위해 이름과 이메일을 수집하는 데 동의합니다.</label>
+
+        <button id="submit" type="submit">신청하기</button>
+        <p id="msg" role="status"></p>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    var form = document.getElementById('form');
+    var msg = document.getElementById('msg');
+    var btn = document.getElementById('submit');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      msg.className = '';
+      if (form.action.indexOf('여기에-폼-ID') !== -1 || form.action.indexOf('%EC%97%AC%EA%B8%B0') !== -1) {
+        msg.className = 'err';
+        msg.textContent = '아직 신청 접수처가 연결되지 않았습니다.';
+        return;
+      }
+      btn.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          form.reset();
+          msg.className = 'ok';
+          msg.textContent = '신청이 완료되었습니다. 접속 링크는 메일로 보내드립니다.';
+        } else {
+          throw new Error('fail');
+        }
+      }).catch(function () {
+        msg.className = 'err';
+        msg.textContent = '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.';
+      }).finally(function () {
+        btn.disabled = false;
+      });
+    });
+  </script>
+</body>
+</html>
